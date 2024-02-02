@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "3X27NxDCfs9b9f0Bhc5zHouHa7VoytyfPu6CDoRAjNvd7VK6J3u10En9NNcaz9RbFuEQhnBN/L/BzojULir4GA==",
+  "dgSpecHash": "xpYJTryci8jeNaN5wbmt2YbNoJhm4s5q8f+mrpv+hBTVmfIMm1yB9R3g0ts+JmvS9sLH1b/AwA1ISkjLHFGNWA==",
   "success": true,
-  "projectFilePath": "D:\\mw\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "C:\\Users\\Marjanek\\source\\repos\\mw\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Marjanek\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
     "C:\\Users\\Marjanek\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\Marjanek\\.nuget\\packages\\system.drawing.common\\8.0.1\\system.drawing.common.8.0.1.nupkg.sha512",
     "C:\\Users\\Marjanek\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.15\\microsoft.windowsdesktop.app.ref.7.0.15.nupkg.sha512",
     "C:\\Users\\Marjanek\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.15\\microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
     "C:\\Users\\Marjanek\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.15\\microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",

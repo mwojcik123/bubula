@@ -15,7 +15,7 @@ public class Program
         bool isWork = true;
         while (isWork)
         {
-            Console.WriteLine("Proszê wybraæ opcjê:\n1 - dodaj klienta,\n2 - dodaj FILM,\n3 - Wyszukaj Klientów,\n4 - Wyszukaj film,\n5 - Wyporzycz Film,\n6 - Obecne Wyporzyczenia,\n7 - Oddane Wyporzyczenia,\n9 - Oddaj FILM. \n10 - wyjdŸ.");
+            Console.WriteLine("Proszê wybraæ opcjê:\n1 - dodaj klienta,\n2 - dodaj FILM,\n3 - Wyszukaj Klientów,\n4 - Wyszukaj film,\n5 - Wyporzycz Film,\n6 - Obecne Wyporzyczenia,\n7 - Oddane Wyporzyczenia,\n8 - Oddaj FILM.\n9 - WYKRES NAJCZÊŒCIEJ OGL¥DANYCH FILMÓW! \n10 - wyjdŸ.");
             string wybor = Console.ReadLine();
             switch (wybor)
             {
@@ -40,8 +40,11 @@ public class Program
                 case "7":
                     rs.DisplayDeployRentals();
                     break;
-                case "9":
+                case "8":
                     rs.DeployMovie();
+                    break;
+                case "9":
+                    rs.DrawChart();
                     break;
                 case "10":
                     isWork = false; 

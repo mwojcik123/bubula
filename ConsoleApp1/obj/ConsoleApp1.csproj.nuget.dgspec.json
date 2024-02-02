@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\mw\\ConsoleApp1\\ConsoleApp1.csproj": {}
+    "C:\\Users\\Marjanek\\source\\repos\\mw\\ConsoleApp1\\ConsoleApp1.csproj": {}
   },
   "projects": {
-    "D:\\mw\\ConsoleApp1\\ConsoleApp1.csproj": {
+    "C:\\Users\\Marjanek\\source\\repos\\mw\\ConsoleApp1\\ConsoleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\mw\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectUniqueName": "C:\\Users\\Marjanek\\source\\repos\\mw\\ConsoleApp1\\ConsoleApp1.csproj",
         "projectName": "ConsoleApp1",
-        "projectPath": "D:\\mw\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectPath": "C:\\Users\\Marjanek\\source\\repos\\mw\\ConsoleApp1\\ConsoleApp1.csproj",
         "packagesPath": "C:\\Users\\Marjanek\\.nuget\\packages\\",
-        "outputPath": "D:\\mw\\ConsoleApp1\\obj\\",
+        "outputPath": "C:\\Users\\Marjanek\\source\\repos\\mw\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -48,6 +48,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             }
           },
           "imports": [

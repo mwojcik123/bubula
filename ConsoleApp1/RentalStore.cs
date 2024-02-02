@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 //using System.Text.Json;
@@ -36,7 +38,7 @@ public class RentalStore
         Console.Write("Nasi Klienci:\n ");
         foreach (var item in customers)
         {
-            Console.WriteLine(item.ID + ' ' +item.Name+ ' '+ item.Address + '\n');
+            Console.WriteLine(item.ID + ' ' +item.Name+ ' '+ item.Address );
         }
         
     }
@@ -102,7 +104,78 @@ public class RentalStore
             Console.WriteLine("Nie można znaleźć wyporzyczenia o danym id.");
         }
     }
+    public void DrawChart()
+    {
+        int margin = 50;
+        Bitmap image = new(1920, 1080);
 
+        int columnWidth = (int)((image.Width - (2 * margin)) / (rentals.Count * 1.5f));
+        int spacingWidth = columnWidth / 2;
+
+        using (Graphics g = Graphics.FromImage(image))
+        {
+            g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 0, image.Width, image.Height));
+
+            //Rysowanie osi
+            Pen axisPen = new Pen(Color.Black);
+            g.DrawLine(axisPen, new Point(margin, margin), new Point(margin, image.Height - 150));
+            g.DrawLine(axisPen, new Point(margin, image.Height - 150), new Point(image.Width - margin, image.Height - 150));
+
+            //Zliczanie wypożyczeń
+            Dictionary<string, int> rentalCounts = new();
+            foreach (Rental rental in rentals)
+            {
+                if (!rentalCounts.ContainsKey(rental.Movie.Title))
+                {
+                    rentalCounts.Add(rental.Movie.Title, 0);
+                }
+                rentalCounts[rental.Movie.Title]++;
+            }
+
+            //Wstępne obliczenia
+            int x = margin + spacingWidth / 2;
+            int axisY = image.Height - 150;
+            int maxRentals = rentalCounts.Max(x => x.Value);
+            int heightPerRental = (image.Height - margin - 150 - 20) / maxRentals;
+
+            //Podpisywanie osi
+            for (int i = 0; i <= maxRentals; i++)
+            {
+                int y = axisY - (i * heightPerRental) - 10;
+                StringFormat stringFormat = new StringFormat();
+                stringFormat.Alignment = StringAlignment.Far; ;
+                stringFormat.LineAlignment = StringAlignment.Center;
+                g.DrawString(i.ToString(), new Font("Arial", 14, FontStyle.Bold), new SolidBrush(Color.Black), new RectangleF(0, y, margin - 2, 20), stringFormat);
+            }
+
+            //Rysowanie słupków
+            foreach (KeyValuePair<string, int> movie in rentalCounts)
+            {
+                int height = heightPerRental * movie.Value;
+
+                g.FillRectangle(new SolidBrush(Color.Blue), new Rectangle(x, axisY - height, columnWidth, height));
+
+                StringFormat stringFormat = new StringFormat();
+                stringFormat.Alignment = StringAlignment.Center;
+                g.DrawString(movie.Key, new Font("Arial", 12, FontStyle.Bold), new SolidBrush(Color.Black), new RectangleF(x - spacingWidth / 2, axisY + 10, columnWidth + spacingWidth, 130), stringFormat);
+                x += columnWidth + spacingWidth;
+
+            }
+        }
+
+        //Zapisanie wykresu
+        image.Save("chart.bmp");
+
+        //Uruchomienie wykresu
+        string filepath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\chart.bmp";
+        Process process = new Process();
+        ProcessStartInfo startInfo = new ProcessStartInfo();
+        startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+        startInfo.FileName = "powershell.exe";
+        startInfo.Arguments = "explorer.exe " + filepath;
+        process.StartInfo = startInfo;
+        process.Start();
+    }
     public void DisplayRentals()
     {
         Console.WriteLine("\nAktualne wypożyczenia:");
